@@ -46,8 +46,8 @@ After some research, I found that the Expectation-Maximization (EM) method, whic
 Given more time, my goal would be to implement a full incremental GMM using the EM algorithm. The steps would be:
 
 `
-Initialize GMM parameters: mixture_coefficients, means, covariances, N (counts per component)
-For each new data point x:
+    Initialize GMM parameters: mixture_coefficients, means, covariances, N (counts per component)
+    For each new data point x:
     
     # E-step
     Calculate responsibilities for x given current parameters:
