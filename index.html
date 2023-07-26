@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Quilt Labs MLE Challenge</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            gap: 20px;
+        }
+
+        #centeredBox {
+            width: 80%;
+            height: 80%;
+            /*border: 1px solid black;*/
+            background: #fff;
+            z-index: 1;
+        }
+
+        .container {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .btn {
+            background-color: #007BFF;
+            border: none;
+            color: white;
+            padding: 12px 30px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                flex-direction: row;
+            }
+        }
+    </style>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+
+<body class="flex flex-col items-center justify-center h-screen bg-gray-100">
+    <h1 class="text-3xl font-bold mb-4">Quilt Labs MLE Challenge</h1>
+
+    <div class="blocked">
+
+    <div
+        class="container cursor-pointer appearance-none flex flex-col md:flex-row justify-center items-center gap-4 bg-white p-4 rounded-lg shadow-lg z-10">
+        <div class="flex items-center gap-2">
+            <label for="toggle" class="font-semibold">Add points</label>
+            <input type="checkbox" id="toggle" class="form-checkbox h-5 w-5 text-blue-600" />
+        </div>
+
+        <div class="flex items-center gap-2">
+            <label for="n_components" id="n_components_label" class="font-semibold">Number of components: 2</label>
+            <input type="range" id="n_components" name="n_components" min="2" max="10" step="1" value="2"
+                class="form-range">
+        </div>
+
+        <!-- <div class="flex items-center gap-2">
+            <label for="epochs" id="epochs_label" class="font-semibold">Number of epochs: 200</label>
+            <input type="range" id="epochs" name="epochs" min="200" max="1000" step="50" value="200" class="form-range">
+        </div> -->
+
+    </div>
+
+    <!-- Create a paragraph below that has instructions for the challenge. Add word wrapping -->
+    <!-- <p class="text-center w-4/5">The goal of this challenge is to create a kernel density estimation (KDE) plot of the data points. The data points are generated from a mixture of Gaussians. The number of components in the mixture can be changed using the slider above. The KDE plot should be updated in real time as the number of components is changed. The KDE plot should be generated using the Gaussian kernel. The bandwidth of the kernel should be chosen using the rule of thumb. The KDE plot should be generated using the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KernelDensity.html">sklearn.neighbors.KernelDensity</a> class. The KDE plot should be generated using the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.mixture.GaussianMixture.html">sklearn.mixture.GaussianMixture</a> class. The KDE plot should be generated using the <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html">sklearn.model_selection.GridSearchCV</a> class.</p> -->
+    <p class="text-center w-4/5">
+        Use the mouse to add points to the graph. Press <code class="bg-gray-200 text-red-600">c</code> to clear the
+        graph and all settings, and press <code class="bg-gray-200 text-red-600">p</code> to compute a density estimate using the points.
+    </p>
+
+
+
+
+<div>    <p class="text-center w-4/5"> Choose Training Type to continue:</p>
+     <button id="normalTrainBtn" class="btn">Normal Training</button>
+    <button id="onlineTrainBtn" class="btn">Online Training</button>
+  
+</div>
+
+</div>
+
+<div><p id="time-display"></p></div>
+
+    <div id="centeredBox" class="w-4/5 h-4/5 bg-white mt-8 rounded-lg shadow-lg"></div>
+
+    <script src="static/script.js"></script>
+
+    <script>
+        // Add an event listener to update the label text when the slider changes
+        document.getElementById('n_components').addEventListener('input', function (e) {
+            document.getElementById('n_components_label').innerText = 'Number of components: ' + e.target.value;
+        });
+
+        // document.getElementById('epochs').addEventListener('input', function (e) {
+        //     document.getElementById('epochs_label').innerText = 'Number of epochs: ' + e.target.value;
+        // });
+    </script>
+
+
+</body>
+
+
+</html>
