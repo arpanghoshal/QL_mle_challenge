@@ -45,8 +45,9 @@ After some research, I found that the Expectation-Maximization (EM) method, whic
 
 Given more time, my goal would be to implement a full incremental GMM using the EM algorithm. The steps would be:
 
-`
+```
     Initialize GMM parameters: mixture_coefficients, means, covariances, N (counts per component)
+    
     For each new data point x:
     
     # E-step
@@ -70,7 +71,7 @@ Given more time, my goal would be to implement a full incremental GMM using the 
         
         # Update mixture coefficients
         mixture_coefficients[i] = N[i] / total_data_points
-`
+```
 
 This approach would make the model more flexible and efficient, particularly for streaming data. Other potential improvements include better data validation mechanisms and optimization of the model training process.
 
